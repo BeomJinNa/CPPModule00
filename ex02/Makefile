@@ -3,13 +3,14 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-NAME	= megaphone
+NAME	= account
 INCLUDE	=
 
 
 #sources=======================================================================
 
-SRCS	= megaphone.cpp
+SRCS	= Account.cpp \
+		  tests.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 

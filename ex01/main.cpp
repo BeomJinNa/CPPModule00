@@ -10,12 +10,12 @@ int	main(void)
 {
 	std::string	input;
 
-	std::cout << "PhoneBook" << std::endl;
+	std::cout << "\033[32m[PhoneBook]\033[0m" << std::endl;
 	while(1)
 	{
-		std::cout << "Enter ADD or SEARCH or EXIT" << std::endl;
-		std::cin >> input;
-		if (action(input))
+		std::cout << "\033[33mEnter ADD or SEARCH or EXIT: \033[0m" << std::flush;
+		std::getline(std::cin, input);
+		if (std::cin.eof() || action(input))
 			return (0);
 	}
 	return (0);
@@ -23,14 +23,20 @@ int	main(void)
 
 namespace
 {
-	static PhoneBook	list;
-
 	int	action(std::string str)
 	{
+		static PhoneBook	list;
+
 		if (str == "ADD")
-			list.AddContact();
+		{
+			if (list.AddContact())
+				return (1);
+		}
 		else if (str == "SEARCH")
-			list.SearchContact();
+		{
+			if (list.SearchContact())
+				return (1);
+		}
 		else if (str == "EXIT")
 			return (1);
 		return (0);

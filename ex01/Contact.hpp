@@ -5,13 +5,12 @@ class	Contact
 {
 	public:
 		Contact(void);
-		Contact(Contact &source);
-		int			GetIndex(void);
-		std::string	GetFirstName(void);
-		std::string	GetLastName(void);
-		std::string	GetNickName(void);
-		std::string	GetPhoneNumber(void);
-		std::string	GetDarkestSecret(void);
+		int			GetIndex(void) const;
+		std::string	GetFirstName(void) const;
+		std::string	GetLastName(void) const;
+		std::string	GetNickName(void) const;
+		std::string	GetPhoneNumber(void) const;
+		std::string	GetDarkestSecret(void) const;
 		void		WriteIndex(int num);
 		void		WriteFirstName(std::string str);
 		void		WriteLastName(std::string str);
@@ -19,10 +18,10 @@ class	Contact
 		void		WritePhoneNumber(std::string str);
 		void		WriteDarkestSecret(std::string str);
 	private:
-		int			index;
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
-		std::string	phone_number;
-		std::string	darkest_secret;
+		int			m_index;
+		std::string	m_first_name;
+		std::string	m_last_name;
+		std::string	m_nickname;
+		std::string	m_phone_number;
+		std::string	m_darkest_secret;
 };
