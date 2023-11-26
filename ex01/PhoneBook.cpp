@@ -48,14 +48,14 @@ int	PhoneBook::AddContact(void)
 
 void	PhoneBook::rotateContactList(Contact &new_contact)
 {
-	for (int i = 7; i > 0; i--)
+	for (int i = 7; i > 0; --i)
 		m_list[i] = m_list[i - 1];
 	m_list[0] = new_contact;
 }
 
 void	PhoneBook::rewriteIndexNumber(void)
 {
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; ++i)
 		if (m_list[i].GetIndex() >= 0)
 			m_list[i].WriteIndex(i);
 }
@@ -77,7 +77,7 @@ int	PhoneBook::SearchContact(void) const
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	if (std::cin.eof())
 		return (1);
-	index--;
+	--index;
 
 	if (index < 0 || index > 7 || m_list[index].GetIndex() < 0)
 		std::cout << "Invalid input" << std::endl;
@@ -104,7 +104,7 @@ void	PhoneBook::printContactList(void) const
 		<< "\033[36m-------------------------------------------------\033[0m"
 		<< std::endl;
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; ++i)
 		if (m_list[i].GetIndex() >= 0)
 			std::cout
 				<< "\033[033m"
